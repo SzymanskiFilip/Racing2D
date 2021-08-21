@@ -1,6 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 import random
+import time as THREAD_SLEEP
 
 pygame.init()
 FPS_CAP = 60
@@ -51,29 +52,46 @@ rect3 = get_random_rect()
 rect4 = get_random_rect()
 rect5 = get_random_rect()
 
+
 def check_collision(carX, carY, rect1, rect2,rect3,rect4,rect5,points):
     carX += 35
     if carX >= rect1.x and carX <= rect1.x + 70:
         if rect1.y > 600 and rect1.y < 620:
-            lost_screen(points)
+            print("1")
+            paused()
     if carX >= rect2.x and carX <= rect2.x + 70:
         if rect2.y > 600 and rect2.y < 620:
-            lost_screen(points)
+            print("2")
+            paused()
     if carX >= rect3.x and carX <= rect3.x + 70:
         if rect3.y > 600 and rect3.y < 620:
-            lost_screen(points)
+            print("3")
+            paused()
     if carX >= rect4.x and carX <= rect4.x + 70:
         if rect4.y > 600 and rect4.y < 620:
-            lost_screen(points)
+            print("4")
+            paused()
     if carX >= rect5.x and carX <= rect5.x + 70:
         if rect5.y > 600 and rect5.y < 620:
-            lost_screen(points)
+            print("5")
+            paused()
 
-def lost_screen(points):
-    DISPLAY.fill(RED)
-    text = "You lost but you managed to get: " + str(points)
-    text_to_render = font.render(text, True, (255,255,255))
-    DISPLAY.blit(text_to_render, (1000//2,720//2))
+def paused():
+
+    DISPLAY.fill(WHITE)
+
+    pause = True
+    while pause:
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+
+
+        pygame.display.update()
+        tick.tick(15)
 
 ## game loop
 while True:
