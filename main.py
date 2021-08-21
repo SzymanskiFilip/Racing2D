@@ -58,25 +58,25 @@ def check_collision(carX, carY, rect1, rect2,rect3,rect4,rect5,points):
     if carX >= rect1.x and carX <= rect1.x + 70:
         if rect1.y > 600 and rect1.y < 620:
             print("1")
-            paused()
+            paused(points)
     if carX >= rect2.x and carX <= rect2.x + 70:
         if rect2.y > 600 and rect2.y < 620:
             print("2")
-            paused()
+            paused(points)
     if carX >= rect3.x and carX <= rect3.x + 70:
         if rect3.y > 600 and rect3.y < 620:
             print("3")
-            paused()
+            paused(points)
     if carX >= rect4.x and carX <= rect4.x + 70:
         if rect4.y > 600 and rect4.y < 620:
             print("4")
-            paused()
+            paused(points)
     if carX >= rect5.x and carX <= rect5.x + 70:
         if rect5.y > 600 and rect5.y < 620:
             print("5")
-            paused()
+            paused(points)
 
-def paused():
+def paused(points):
 
     DISPLAY.fill(WHITE)
 
@@ -94,7 +94,7 @@ def paused():
                     quit()
 
         DISPLAY.fill(RED)
-        message = "PRES ENTER TO EXIT"
+        message = "You got: " + str(points) + " Points. Press Enter to exit."
         text = font.render(message, 1, (WHITE))
         text_rect = text.get_rect(center=(1000//2, 720//2))
         DISPLAY.blit(text, text_rect)
@@ -114,9 +114,12 @@ while True:
     #movement handling
     keys_pressed = pygame.key.get_pressed()
     if keys_pressed[pygame.K_LEFT]:
-        carX -= 10
+        if carX > 0:
+            carX -= 10
     if keys_pressed[pygame.K_RIGHT]:
-        carX += 10
+        if carX < 1000 - 70:
+            carX += 10
+
 
     if rect1.y > 800:
         rect1 = get_random_rect()
