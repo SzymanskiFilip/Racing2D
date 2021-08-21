@@ -51,7 +51,22 @@ rect3 = get_random_rect()
 rect4 = get_random_rect()
 rect5 = get_random_rect()
 
-collided = False
+def check_collision(carX, carY, rect1, rect2,rect3,rect4,rect5):
+    if carX > rect1.x and carX < rect1.x + 70:
+        if rect1.y > 600 and rect1.y < 620:
+            print("COLLIDED1")
+    if carX > rect2.x and carX < rect2.x + 70:
+        if rect2.y > 600 and rect2.y < 620:
+            print("COLLIDED2")
+    if carX > rect3.x and carX < rect3.x + 70:
+        if rect3.y > 600 and rect3.y < 620:
+            print("COLLIDED3")
+    if carX > rect4.x and carX < rect4.x + 70:
+        if rect4.y > 600 and rect4.y < 620:
+            print("COLLIDED4")
+    if carX > rect5.x and carX < rect5.x + 70:
+        if rect5.y > 600 and rect5.y < 620:
+            print("COLLIDED5")
 
 ## game loop
 while True:
@@ -86,10 +101,8 @@ while True:
     time_score = font.render("POINTS: " + str(time), True, (255,255,255))
 
     move_obstacles(rect1,rect2,rect3,rect4,rect5)
+    check_collision(carX, carY, rect1, rect2,rect3,rect4,rect5)
 
-    if carX > rect1.x and carX < rect1.x + 70:
-        if rect1.y > 600 and rect1.y < 620:
-            print("COLLIDED")
 
     pygame.draw.rect(DISPLAY, WHITE, rect1)
     pygame.draw.rect(DISPLAY, RED, rect2)
