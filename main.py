@@ -44,9 +44,6 @@ def move_obstacles(rect1, rect2, rect3, rect4,rect5):
     rect4.y += 5
     rect5.y += 11
 
-def collided():
-    DISPLAY.fill(RED)
-
 
 rect1 = get_random_rect()
 rect2 = get_random_rect()
@@ -90,9 +87,9 @@ while True:
 
     move_obstacles(rect1,rect2,rect3,rect4,rect5)
 
-    if carX == rect1.x and carY == rect1.y:
-        print("collided with white rect")
-
+    if carX > rect1.x and carX < rect1.x + 70:
+        if rect1.y > 600 and rect1.y < 620:
+            print("COLLIDED")
 
     pygame.draw.rect(DISPLAY, WHITE, rect1)
     pygame.draw.rect(DISPLAY, RED, rect2)
