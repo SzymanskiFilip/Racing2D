@@ -88,14 +88,20 @@ def paused():
                 pygame.quit()
                 quit()
 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    pygame.quit()
+                    quit()
+
         DISPLAY.fill(RED)
-        message = "PRES ENTER TO PLAY AGAIN"
+        message = "PRES ENTER TO EXIT"
         text = font.render(message, 1, (WHITE))
         text_rect = text.get_rect(center=(1000//2, 720//2))
         DISPLAY.blit(text, text_rect)
 
         pygame.display.update()
         tick.tick(10)
+
 
 ## game loop
 while True:
