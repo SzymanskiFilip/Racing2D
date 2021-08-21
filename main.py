@@ -88,10 +88,14 @@ def paused():
                 pygame.quit()
                 quit()
 
-
+        DISPLAY.fill(RED)
+        message = "PRES ENTER TO PLAY AGAIN"
+        text = font.render(message, 1, (WHITE))
+        text_rect = text.get_rect(center=(1000//2, 720//2))
+        DISPLAY.blit(text, text_rect)
 
         pygame.display.update()
-        tick.tick(15)
+        tick.tick(10)
 
 ## game loop
 while True:
